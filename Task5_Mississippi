@@ -1,0 +1,26 @@
+#Write Python code to create a function called most_frequent that takes a string and prints the letters in decreasing order of frequency. Use dictionaries.
+#Your Input and output should look something like this
+#Input : Please enter a string Mississippi
+#Output : i = 04 s = 04 p =02 m =01
+
+input = 'Mississippi'
+
+def make_dict(x):
+    dictionary = {}
+    for letter in x:
+        dictionary[letter] = 1 + dictionary.get(letter, 0)
+    return dictionary
+
+def most_frequent(text):
+    #lower case for accepting M and m as a single letter only
+    letters = [letter.lower() for letter in text if letter.isalpha()]
+    dictionary = make_dict(letters)
+    result = []
+    for key in dictionary:
+        result.append((dictionary[key], key))
+    result.sort(reverse=True)
+    for count, letter in result:
+        print(letter,'=', count)
+
+
+most_frequent(input)
